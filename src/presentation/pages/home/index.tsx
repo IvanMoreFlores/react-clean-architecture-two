@@ -15,15 +15,39 @@ const PageHome = () => {
       <div>
         <div className="div-hero">
           <div className="div-hero-text">
-            <div>
-              <p className="p-hero">FIND CLOTHES</p>
-              <p className="p-hero">THAT MATCHES</p>
-              <p className="p-hero">YOUR STYLE</p>
+            <div className="div-hero-img">
+              <div>
+                <p className="p-hero">FIND CLOTHES</p>
+                <p className="p-hero">THAT MATCHES</p>
+                <p className="p-hero">YOUR STYLE</p>
+              </div>
               <DSText variant="p" color="black">
                 Browse through our diverse range of meticulously crafted
-                garments, designed 
+                garments, designed
               </DSText>
-              <DSButton text="Shop Now" onClick={() => {}} />
+              <div className="div-hero-button">
+                <DSButton text="Shop Now" onClick={() => {}} />
+              </div>
+              <div className="div-hero-cards">
+                <div>
+                  <p className="p-card">200+</p>
+                  <DSText variant="p" color="black">
+                    International Brands
+                  </DSText>
+                </div>
+                <div>
+                  <p className="p-card">2,000+</p>
+                  <DSText variant="p" color="black">
+                    High-Quality Products
+                  </DSText>
+                </div>
+                <div>
+                  <p className="p-card">30,000+</p>
+                  <DSText variant="p" color="black">
+                    Happy Customers
+                  </DSText>
+                </div>
+              </div>
             </div>
           </div>
           <div className="div-hero-img">

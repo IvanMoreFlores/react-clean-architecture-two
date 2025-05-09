@@ -4,10 +4,7 @@
   justify-content: center;
   align-self: center;
   align-items: center;
-}
-
-.div-hero-text .div-hero-img {
-  width: 50%;
+  gap: 40px;
 }
 
 .p-hero {
@@ -31,4 +28,34 @@
 .img-hero {
   display: block;
   width: 600px;
+}
+
+.div-hero-cards {
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+  align-items: center;
+  gap: 20px;
+}
+
+.p-card {
+  font-weight: 500;
+  font-size: 40px;
+  text-align: center;
+  text-align: start;
+  display: block;
+  margin: 0px;
+}
+
+.div-hero-img {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.div-hero-button {
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+  align-items: center;
 }

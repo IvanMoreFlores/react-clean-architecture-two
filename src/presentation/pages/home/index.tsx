@@ -1,9 +1,17 @@
+import { useState } from "react";
 import { DSDivSign, DSNavBar } from "../../components";
 import "./styles.css";
 const PageHome = () => {
+
+  const [open, setOpen] = useState<boolean>(true);
+
+  const handleOpen = () => {
+    setOpen(!open);
+  };
+
   return (
     <section>
-      <DSDivSign />
+      {open && <DSDivSign onClose={handleOpen} />}
       <DSNavBar />
       <div>
         <div></div>

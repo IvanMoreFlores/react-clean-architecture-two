@@ -6,6 +6,10 @@
   justify-content: space-around;
   align-items: center;
 
+  button {
+    border: none;
+    background-color: #000000;
+  }
 
   .div-text {
     text-align: center;

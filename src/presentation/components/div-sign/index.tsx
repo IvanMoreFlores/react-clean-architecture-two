@@ -1,5 +1,9 @@
 import "./styles.css";
-const DSDivSign = () => {
+
+interface IProps {
+  onClose: () => void;
+}
+const DSDivSign = ({onClose }: IProps) => {
   return (
     <div className="div-sign">
       <div></div>
@@ -8,9 +12,9 @@ const DSDivSign = () => {
         <br />
         <p className="p-sign">Sign Up Now</p>
       </div>
-      <div>
+      <button onClick={onClose} aria-label="Close">
         <img src="/src/presentation/assets/icon/close.svg" alt="Close" />
-      </div>
+      </button>
     </div>
   );
 };

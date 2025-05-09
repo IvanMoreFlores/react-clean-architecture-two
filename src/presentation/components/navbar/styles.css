@@ -1,0 +1,56 @@
+.div-navbar-body {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  padding-top: 20px;
+  padding-bottom: 20px;
+  background-color: white;
+  gap: 40px;
+
+  .div-navbar-menu {
+    display: flex;
+    flex-direction: row;
+    gap: 20px;
+    p {
+      font-size: 16px;
+      cursor: pointer;
+    }
+
+    .div-navbar-shop {
+      display: flex;
+      flex-direction: row;
+      gap: 5px;
+      img {
+        cursor: pointer;
+      }
+    }
+  }
+
+  .div-navbar-icon {
+    display: flex;
+    flex-direction: row;
+    gap: 10px;
+    img {
+      cursor: pointer;
+    }
+  }
+
+  .div-navbar-input {
+    display: flex;
+    width: 577px;
+    flex-direction: row;
+    gap: 10px;
+    background-color: #f0f0f0;
+    border-radius: 32px;
+    padding:16px;
+
+    input {
+      width: 100%;
+      font-size: 16px;
+      border: none;
+      background-color: #f0f0f0;
+      outline: none;
+    }
+  }
+}

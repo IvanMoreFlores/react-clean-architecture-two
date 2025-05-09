@@ -3,7 +3,7 @@ import "./styles.css";
 interface IProps {
   onClose: () => void;
 }
-const DSDivSign = ({onClose }: IProps) => {
+const DSDivSign = ({ onClose }: IProps) => {
   return (
     <div className="div-sign">
       <div></div>

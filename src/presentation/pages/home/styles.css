@@ -1,3 +1,24 @@
+.div-hero {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-self: center;
+  align-items: center;
+}
+
+.div-hero-text .div-hero-img {
+  width: 50%;
+}
+
+.p-hero {
+  font-family: "Integral", sans-serif;
+  font-size: 64px;
+  text-align: center;
+  text-align: start;
+  display: block;
+  margin: 0px;
+}
+
 .div-brands {
   height: 122px;
   background-color: black;
@@ -5,4 +26,9 @@
   flex-direction: row;
   justify-content: space-around;
   align-items: center;
+}
+
+.img-hero {
+  display: block;
+  width: 600px;
 }

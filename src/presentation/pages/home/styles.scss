@@ -61,3 +61,11 @@ $color-black: #000;
   justify-content: space-around;
   align-items: center;
 }
+
+.div-arrival {
+  padding-top: 40px;
+  padding-bottom: 40px;
+  display: flex;
+  flex-direction: column;
+  gap: 40px;
+}

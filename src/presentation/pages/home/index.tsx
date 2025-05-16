@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { DSButton, DSDivSign, DSNavBar, DSText } from "../../components";
-import "./styles.css";
+import "./styles.scss";
 const PageHome = () => {
   const [open, setOpen] = useState<boolean>(true);
 
@@ -68,6 +68,10 @@ const PageHome = () => {
             alt="Calvin"
           />
         </div>
+      </div>
+      <div className="div-arrival">
+        <p className="p-arrival">NEW ARRIVALS</p>
+        <DSButton text="View All" onClick={() => {}} />
       </div>
     </section>
   );

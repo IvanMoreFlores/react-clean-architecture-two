@@ -1,4 +1,5 @@
-import "./styles.css";
+// import "./styles.css";
+import styles from "./button.module.scss";
 
 interface IProps extends React.ButtonHTMLAttributes<HTMLButtonElement> {
   text: string;
@@ -7,7 +8,7 @@ interface IProps extends React.ButtonHTMLAttributes<HTMLButtonElement> {
 }
 const Button = ({ text, onClick }: IProps) => {
   return (
-    <button className="button-body" onClick={onClick}>
+    <button className={styles["button-body"]} onClick={onClick}>
       {text}
     </button>
   );

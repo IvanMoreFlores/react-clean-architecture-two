@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { DSButton, DSDivSign, DSNavBar, DSText } from "../../components";
+import { DSButton, DSDivSign, DSDivTittle, DSNavBar, DSText } from "../../components";
 import "./styles.scss";
 const PageHome = () => {
   const [open, setOpen] = useState<boolean>(true);
@@ -69,15 +69,8 @@ const PageHome = () => {
           />
         </div>
       </div>
-      <div className="div-arrival">
-        <p className="p-arrival">NEW ARRIVALS</p>
-        <DSButton color="black" backgroundColor="transparent" borderColor="gray" text="View All" onClick={() => {}} />
-        <div className="div-divider"></div>
-      </div>
-      <div className="div-arrival">
-        <p className="p-arrival">top selling</p>
-        <DSButton color="black" backgroundColor="transparent" borderColor="gray" text="View All" onClick={() => {}} />
-      </div>
+      <DSDivTittle divider title="New Arrivals" onClick={() => {}} />
+      <DSDivTittle title="top selling" onClick={() => {}} />
     </section>
   );
 };

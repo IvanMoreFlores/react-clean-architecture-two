@@ -72,6 +72,11 @@ const PageHome = () => {
       <div className="div-arrival">
         <p className="p-arrival">NEW ARRIVALS</p>
         <DSButton color="black" backgroundColor="transparent" borderColor="gray" text="View All" onClick={() => {}} />
+        <div className="div-divider"></div>
+      </div>
+      <div className="div-arrival">
+        <p className="p-arrival">top selling</p>
+        <DSButton color="black" backgroundColor="transparent" borderColor="gray" text="View All" onClick={() => {}} />
       </div>
     </section>
   );

@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import {
   DSButton,
   DSDivSign,
@@ -7,8 +7,30 @@ import {
   DSText,
 } from "../../components";
 import "./styles.scss";
+import { ProductUseCases } from "../../../application/use-cases/product.use-cases";
+import { ProductApi } from "../../../insfrastructure/Product-api";
+import { Product } from "../../../domain/entities/product.entity";
 const PageHome = () => {
   const [open, setOpen] = useState<boolean>(true);
+  const [products, setProducts] = useState<Product[]>([]);
+
+  useEffect(() => {
+    // const getData = async () => {
+    //   const response = await fetch("https://dummyjson.com/products");
+    //   const data = await response.json();
+    //   console.log(data);
+    // };
+    const getData = async () => {
+      const useCase = new ProductUseCases(new ProductApi());
+      const data = await useCase.getAllProducts();
+      if(data.status === 200) {
+        if("response" in data) {
+          setProducts(data.response.products);
+        }
+      }
+    };
+    getData();
+  }, []);
 
   const handleOpen = () => {
     setOpen(!open);

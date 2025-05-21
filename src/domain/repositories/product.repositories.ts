@@ -3,4 +3,5 @@ import { ProductResponseSuccess } from "../entities/product-response-success.ent
 
 export interface ProductRepository {
   getAllProducts: () => Promise<ProductResponseSuccess | ErrorResponse>;
+  getProductById: (id: string) => Promise<ProductResponseSuccess | ErrorResponse>;
 }

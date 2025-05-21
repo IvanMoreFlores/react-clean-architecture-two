@@ -15,11 +15,6 @@ const PageHome = () => {
   const [products, setProducts] = useState<Product[]>([]);
 
   useEffect(() => {
-    // const getData = async () => {
-    //   const response = await fetch("https://dummyjson.com/products");
-    //   const data = await response.json();
-    //   console.log(data);
-    // };
     const getData = async () => {
       const useCase = new ProductUseCases(new ProductApi());
       const data = await useCase.getAllProducts();
@@ -98,8 +93,8 @@ const PageHome = () => {
         </div>
       </div>
       <div className="div-arrival">
-        <DSDivTittle divider title="New Arrivals" onClick={() => {}} />
-        <DSDivTittle title="top selling" onClick={() => {}} />
+        <DSDivTittle products={products} divider title="New Arrivals" onClick={() => {}} />
+        <DSDivTittle products={products} title="top selling" onClick={() => {}} />
       </div>
     </section>
   );

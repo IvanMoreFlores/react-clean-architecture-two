@@ -2,6 +2,7 @@ import { Formik } from "formik";
 import { LoginUseCases } from "../../../application/use-cases/login.use.cases";
 import { LoginApi } from "../../../insfrastructure/Login-api";
 import { useState } from "react";
+import * as Yup from "yup";
 
 const LoginPage = () => {
   const [messageResponse, setMessageResponse] = useState<string>("");
@@ -33,11 +34,17 @@ const LoginPage = () => {
     return errors;
   };
 
+  const validatesYup = Yup.object().shape({
+    email: Yup.string().email("Invalid email").required("Required"),
+    password: Yup.string().required("Required").max(35, "Max 35 characters").min(5, "Min 5 characters"),
+  });
+
   return (
     <div className="flex items-center justify-center h-screen bg-gray-100">
       <Formik
         initialValues={{ email: "", password: "" }}
-        validate={(values) => validates(values)}
+        // validate={(values) => validates(values)}
+        validationSchema={validatesYup}
         onSubmit={(values, { setSubmitting }) => {
           login(values.email, values.password);
           setTimeout(() => {

@@ -1,4 +1,4 @@
-import { ErrorResponse } from "../entities/product-response-error.entity";
+import { ErrorResponse } from "../entities/response-error.entity";
 import { ProductResponseSuccess } from "../entities/product-response-success.entity";
 
 export interface ProductRepository {

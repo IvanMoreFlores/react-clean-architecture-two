@@ -1,4 +1,4 @@
-import { ErrorResponse } from "../../domain/entities/product-response-error.entity";
+import { ErrorResponse } from "../../domain/entities/response-error.entity";
 import { ProductResponseSuccess } from "../../domain/entities/product-response-success.entity";
 import { ProductRepository } from "../../domain/repositories/product.repositories";
 

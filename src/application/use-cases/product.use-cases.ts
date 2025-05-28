@@ -1,11 +1,12 @@
 import { ErrorResponse } from "../../domain/entities/response-error.entity";
-import { ProductResponseSuccess } from "../../domain/entities/product-response-success.entity";
+import { ProductsResponseSuccess } from "../../domain/entities/products-response-success.entity";
 import { ProductRepository } from "../../domain/repositories/product.repositories";
+import { ProductResponseSuccess } from "../../domain/entities/product-response-success.entity";
 
 export class ProductUseCases {
   constructor(private readonly productRepository: ProductRepository) {}
 
-  async getAllProducts(): Promise<ProductResponseSuccess | ErrorResponse> {
+  async getAllProducts(): Promise<ProductsResponseSuccess | ErrorResponse> {
     try {
       return await this.productRepository.getAllProducts();
     } catch (error) {

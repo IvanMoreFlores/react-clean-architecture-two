@@ -1,5 +1,5 @@
 import { DSButton } from "..";
-import { Product } from "../../../domain/entities/product.entity";
+import { Product } from "../../../domain/entities/products.entity";
 import styles from "./Tittle.module.scss";
 import { useNavigate } from "react-router";
 

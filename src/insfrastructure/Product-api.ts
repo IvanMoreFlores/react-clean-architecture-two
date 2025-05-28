@@ -1,11 +1,12 @@
 import { AxiosError } from "axios";
 import api from "../application/services/api";
 import { ErrorResponse } from "../domain/entities/response-error.entity";
-import { ProductResponseSuccess } from "../domain/entities/product-response-success.entity";
+import { ProductsResponseSuccess } from "../domain/entities/products-response-success.entity";
 import { ProductRepository } from "../domain/repositories/product.repositories";
+import { ProductResponseSuccess } from "../domain/entities/product-response-success.entity";
 
 export class ProductApi implements ProductRepository {
-  async getAllProducts(): Promise<ProductResponseSuccess | ErrorResponse> {
+  async getAllProducts(): Promise<ProductsResponseSuccess | ErrorResponse> {
     const url = "/products";
     try {
       const response = await api.get(url);

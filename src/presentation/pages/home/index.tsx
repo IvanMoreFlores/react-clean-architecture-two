@@ -9,7 +9,7 @@ import {
 import "./styles.scss";
 import { ProductUseCases } from "../../../application/use-cases/product.use-cases";
 import { ProductApi } from "../../../insfrastructure/Product-api";
-import { Product } from "../../../domain/entities/product.entity";
+import { Product } from "../../../domain/entities/products.entity";
 const PageHome = () => {
   const [open, setOpen] = useState<boolean>(true);
   const [products, setProducts] = useState<Product[]>([]);

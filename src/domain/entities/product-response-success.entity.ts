@@ -1,11 +1,6 @@
-import { Product } from "./product.entity";
+import { Product } from "./products.entity";
 
 export interface ProductResponseSuccess {
-  response: {
-    products: Product[];
-    total: number;
-    skip: number;
-    limit: number;
-  };
+  response: Product;
   status: number;
 }

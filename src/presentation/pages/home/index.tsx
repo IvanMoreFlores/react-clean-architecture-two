@@ -13,13 +13,14 @@ import { Product } from "../../../domain/entities/product.entity";
 const PageHome = () => {
   const [open, setOpen] = useState<boolean>(true);
   const [products, setProducts] = useState<Product[]>([]);
+  const user = localStorage.getItem("user");
 
   useEffect(() => {
     const getData = async () => {
       const useCase = new ProductUseCases(new ProductApi());
       const data = await useCase.getAllProducts();
-      if(data.status === 200) {
-        if("response" in data) {
+      if (data.status === 200) {
+        if ("response" in data) {
           setProducts(data.response.products);
         }
       }
@@ -33,7 +34,7 @@ const PageHome = () => {
 
   return (
     <section>
-      {open && <DSDivSign onClose={handleOpen} />}
+      {!user ? open && <DSDivSign onClose={handleOpen} /> : null}
       <DSNavBar />
       <div>
         <div className="div-hero">
@@ -93,8 +94,17 @@ const PageHome = () => {
         </div>
       </div>
       <div className="div-arrival">
-        <DSDivTittle products={products} divider title="New Arrivals" onClick={() => {}} />
-        <DSDivTittle products={products} title="top selling" onClick={() => {}} />
+        <DSDivTittle
+          products={products}
+          divider
+          title="New Arrivals"
+          onClick={() => {}}
+        />
+        <DSDivTittle
+          products={products}
+          title="top selling"
+          onClick={() => {}}
+        />
       </div>
     </section>
   );

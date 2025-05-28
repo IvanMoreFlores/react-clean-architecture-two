@@ -8,6 +8,7 @@ import "./styles.scss";
 const DetailPage = () => {
   const { id } = useParams();
   const [open, setOpen] = useState<boolean>(true);
+  const user = localStorage.getItem("user");
 
   const handleOpen = () => {
     setOpen(!open);
@@ -26,13 +27,21 @@ const DetailPage = () => {
 
   return (
     <section>
-      {open && <DSDivSign onClose={handleOpen} />}
+      {!user ? open && <DSDivSign onClose={handleOpen} /> : null}
       <DSNavBar />
       <div className="div-menu">
-        <div><p>Home</p></div>
-        <div><p>Shop</p></div>
-        <div><p>Men</p></div>
-        <div><p>T-shirts</p></div>
+        <div>
+          <p>Home</p>
+        </div>
+        <div>
+          <p>Shop</p>
+        </div>
+        <div>
+          <p>Men</p>
+        </div>
+        <div>
+          <p>T-shirts</p>
+        </div>
       </div>
       <h1>Detail Page</h1>
       <p>This is the detail page {id}.</p>

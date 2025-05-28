@@ -66,6 +66,8 @@ const LoginPage = () => {
       if ("response" in response) {
         setMessageResponse("Login successful");
         localStorage.setItem("token", response.response.accessToken);
+        localStorage.setItem("user", response.response.username);
+        localStorage.setItem("image", response.response.image);
         navigate("/home");
       }
     } else {

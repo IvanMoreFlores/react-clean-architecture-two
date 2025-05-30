@@ -152,6 +152,9 @@ const DetailPage = () => {
           <div className="div-detail-description">
             <p className="p-detail-description">{product?.description}</p>
           </div>
+          <div className="div-divider"></div>
+          <p className="p-detail-description">Select Colors</p>
+          <div className="div-divider"></div>
         </div>
       </div>
 

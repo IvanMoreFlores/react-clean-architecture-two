@@ -1,11 +1,13 @@
 import { useNavigate } from "react-router";
 import "./styles.css";
+import { useAuthStore } from "../../store/zustand/AuthStore";
 const DSNavBar = () => {
   const navigate = useNavigate();
-  const user = localStorage.getItem("user");
+  const username = localStorage.getItem("user");
+  const { user } = useAuthStore();
 
   const onClickSignIn = () => {
-    if (!user) {
+    if (!username) {
       navigate("/login");
     } else {
       navigate("/profile");
@@ -13,13 +15,14 @@ const DSNavBar = () => {
   };
 
   const onLogout = () => {
+    // useAuthStore.persist.clearStorage();
     localStorage.clear();
     navigate("/");
   };
 
   return (
     <div className="div-navbar-body">
-      <div>
+      <div onClick={() => navigate("/")} className="div-navbar-logo">
         <img src="/src/presentation/assets/img/logo.svg" alt="Logo" />
       </div>
       <div className="div-navbar-menu">
@@ -37,7 +40,7 @@ const DSNavBar = () => {
       </div>
       <div className="div-navbar-icon">
         <img src="/src/presentation/assets/icon/cart.svg" alt="Cart" />
-        {user ? (
+        {username ? (
           <>
             <p onClick={onLogout} className="p-user">
               Logout
@@ -60,7 +63,7 @@ const DSNavBar = () => {
         )}
 
         <p onClick={onClickSignIn} className="p-user">
-          {user ?? "Sign In"}
+          {username ?? "Sign In"} {user}
         </p>
       </div>
     </div>

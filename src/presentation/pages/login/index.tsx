@@ -1,13 +1,15 @@
-import { Formik } from "formik";
+// import { Formik } from "formik";
 import { LoginUseCases } from "../../../application/use-cases/login.use.cases";
 import { LoginApi } from "../../../insfrastructure/Login-api";
 import { useState } from "react";
-import * as Yup from "yup";
+// import * as Yup from "yup";
 import { useForm } from "../../hooks/useForm";
 import { useNavigate } from "react-router";
+import { useAuthStore } from "../../store/zustand/AuthStore";
 
 const LoginPage = () => {
   const navigate = useNavigate();
+  const { setUser } = useAuthStore();
   const [messageResponse, setMessageResponse] = useState<string>("");
   const { form, onChange, email, password, isValid } = useForm(
     {
@@ -50,13 +52,13 @@ const LoginPage = () => {
   //   return errors;
   // };
 
-  const validatesYup = Yup.object().shape({
-    email: Yup.string().email("Invalid email").required("Required"),
-    password: Yup.string()
-      .required("Required")
-      .max(35, "Max 35 characters")
-      .min(5, "Min 5 characters"),
-  });
+  // const validatesYup = Yup.object().shape({
+  //   email: Yup.string().email("Invalid email").required("Required"),
+  //   password: Yup.string()
+  //     .required("Required")
+  //     .max(35, "Max 35 characters")
+  //     .min(5, "Min 5 characters"),
+  // });
 
   const login = async () => {
     form.email = "emilys";
@@ -65,6 +67,7 @@ const LoginPage = () => {
     if (response.status === 200) {
       if ("response" in response) {
         setMessageResponse("Login successful");
+        setUser(response.response.username);
         localStorage.setItem("token", response.response.accessToken);
         localStorage.setItem("user", response.response.username);
         localStorage.setItem("image", response.response.image);

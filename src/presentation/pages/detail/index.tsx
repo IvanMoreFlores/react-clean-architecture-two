@@ -5,6 +5,8 @@ import { ProductApi } from "../../../insfrastructure/Product-api";
 import { DSDivSign, DSNavBar } from "../../components";
 import "./styles.scss";
 import { Product } from "../../../domain/entities/products.entity";
+import useProductStore from "../../store/zustand/ProductStore";
+import { calculateDiscount } from "../../utils";
 
 const DetailPage = () => {
   const { id } = useParams();
@@ -12,6 +14,8 @@ const DetailPage = () => {
   const [product, setProduct] = useState<Product | null>(null);
   const [imageSelected, setImageSelected] = useState<string | null>(null);
   const user = localStorage.getItem("user");
+  const { product: productStore, setProduct: setProductStore } =
+    useProductStore();
 
   const handleOpen = () => {
     setOpen(!open);
@@ -19,11 +23,22 @@ const DetailPage = () => {
 
   useEffect(() => {
     const fetchProductDetails = async () => {
+      if (!id) {
+        return;
+      }
+
+      if (productStore && productStore.id === Number(id)) {
+        setProduct(productStore);
+        setImageSelected(productStore.images[0]);
+        return;
+      }
+
       const useCase = new ProductUseCases(new ProductApi());
       const response = await useCase.getProductById(id?.toString() ?? "");
       if (response.status === 200) {
         console.log("Product details:", response);
         if ("response" in response) {
+          setProductStore(response.response);
           setProduct(response.response);
           setImageSelected(response.response.images[0]);
         }
@@ -64,15 +79,17 @@ const DetailPage = () => {
         <div className="div-detail-image">
           <div className="div-galery">
             {product?.images &&
-              product.images.map((image, index) => (
-                <img
-                  onClick={() => handleImageClick(image)}
-                  key={index}
-                  src={image}
-                  alt={`Product image ${index + 1}`}
-                  className="img-galery"
-                />
-              ))}
+              product.images
+                .slice(0, 3)
+                .map((image, index) => (
+                  <img
+                    onClick={() => handleImageClick(image)}
+                    key={index}
+                    src={image}
+                    alt={`Product image ${index + 1}`}
+                    className="img-galery"
+                  />
+                ))}
           </div>
           <div>
             <img
@@ -82,10 +99,28 @@ const DetailPage = () => {
             />
           </div>
         </div>
-        <div>
-          <p className="p-detail-name">{product?.title}</p>
-          <p className="p-detail-price">{product?.price}</p>
-          <p className="p-detail-description">{product?.description}</p>
+        <div className="div-detail-info">
+          <div className="div-detail-name">
+            <p className="p-detail-name">{product?.title}</p>
+          </div>
+          <div className="div-price-product">
+            <p className="p-price-product">
+              $
+              {calculateDiscount(
+                product?.price ?? 0,
+                product?.discountPercentage ?? 0
+              ).toFixed(2)}
+            </p>
+            <p className="p-discount-product">${product?.price}</p>
+            <div className="div-porcent-product">
+              <p className="p-porcent-product">
+                -{product?.discountPercentage}%
+              </p>
+            </div>
+          </div>
+          <div className="div-detail-description">
+            <p className="p-detail-description">{product?.description}</p>
+          </div>
         </div>
       </div>
 

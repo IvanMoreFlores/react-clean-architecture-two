@@ -66,4 +66,10 @@
     height: 24px;
     cursor: pointer;
   }
+
+  .div-navbar-logo {
+    img {
+      cursor: pointer;
+    }
+  }
 }

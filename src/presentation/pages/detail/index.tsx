@@ -103,6 +103,37 @@ const DetailPage = () => {
           <div className="div-detail-name">
             <p className="p-detail-name">{product?.title}</p>
           </div>
+          <div className="div-detail-rating">
+            <div className="div-stars">
+              {Array.from({ length: 5 }).map((_, index) => {
+                const rating = product?.rating ?? 0;
+                const startValue = index + 1;
+
+                if (rating >= startValue) {
+                  return (
+                    <img
+                      key={index}
+                      src="/src/presentation/assets/img/star-one.svg"
+                      alt="star"
+                      className="img-star"
+                    />
+                  );
+                } else if (rating >= startValue - 0.5 && rating < startValue) {
+                  return (
+                    <img
+                      key={index}
+                      src="/src/presentation/assets/img/star.svg"
+                      alt="star"
+                      className="img-star"
+                    />
+                  );
+                } else {
+                  return <></>;
+                }
+              })}
+            </div>
+            <p className="p-detail-rating">{product?.rating}/5</p>
+          </div>
           <div className="div-price-product">
             <p className="p-price-product">
               $

@@ -6,7 +6,7 @@ import { DSDivSign, DSNavBar } from "../../components";
 import "./styles.scss";
 import { Product } from "../../../domain/entities/products.entity";
 import useProductStore from "../../store/zustand/ProductStore";
-import { calculateDiscount } from "../../utils";
+import { calculateDiscount, formatDate, formatDateSpanish } from "../../utils";
 import { useCartStore } from "../../store/zustand/CartStore";
 
 type size = "S" | "M" | "L" | "XL";
@@ -21,8 +21,6 @@ const DetailPage = () => {
   const { product: productStore, setProduct: setProductStore } =
     useProductStore();
   const { setCart, cart } = useCartStore();
-  // const cartStore = cart.find((item) => item.id === Number(id))?.quantity ?? 0;
-
   const [count, setCount] = useState<number>(
     cart.find((item) => item.id === Number(id))?.quantity ?? 1
   );
@@ -96,6 +94,7 @@ const DetailPage = () => {
         size: size,
       };
       setCart(newProduct);
+      alert("Producto agregado al carrito");
     }
   };
 
@@ -317,6 +316,49 @@ const DetailPage = () => {
             </div>
           </div>
         </div>
+      </div>
+      <div className="div-reviews">
+        {product &&
+          product.reviews.map((review) => (
+            <div className="div-review">
+              <div className="div-stars">
+                {Array.from({ length: 5 }).map((_, index) => {
+                  const rating = review?.rating ?? 0;
+                  const startValue = index + 1;
+
+                  if (rating >= startValue) {
+                    return (
+                      <img
+                        key={index}
+                        src="/src/presentation/assets/img/star-one.svg"
+                        alt="star"
+                        className="img-star"
+                      />
+                    );
+                  } else if (
+                    rating >= startValue - 0.5 &&
+                    rating < startValue
+                  ) {
+                    return (
+                      <img
+                        key={index}
+                        src="/src/presentation/assets/img/star.svg"
+                        alt="star"
+                        className="img-star"
+                      />
+                    );
+                  } else {
+                    return <></>;
+                  }
+                })}
+              </div>
+              <p className="p-review-name">{review.reviewerName}</p>
+              <p className="p-review-comment">{review.comment}</p>
+              <p className="p-review-date">
+                Posted on {formatDateSpanish(new Date(review.date))}
+              </p>
+            </div>
+          ))}
       </div>
     </section>
   );

@@ -1,10 +1,12 @@
 import { useNavigate } from "react-router";
 import "./styles.css";
 import { useAuthStore } from "../../store/zustand/AuthStore";
+import { useCartStore } from "../../store/zustand/CartStore";
 const DSNavBar = () => {
   const navigate = useNavigate();
   const username = localStorage.getItem("user");
   const { user } = useAuthStore();
+  const { countCart } = useCartStore();
 
   const onClickSignIn = () => {
     if (!username) {
@@ -39,7 +41,13 @@ const DSNavBar = () => {
         <input type="text" placeholder="Search for products..." />
       </div>
       <div className="div-navbar-icon">
-        <img src="/src/presentation/assets/icon/cart.svg" alt="Cart" />
+        {countCart > 0 && (
+          <div className="div-navbar-icon badge-container">
+            <img src="/src/presentation/assets/icon/cart.svg" alt="Cart" />
+            <span className="cart-badge">{countCart}</span>
+          </div>
+        )}
+
         {username ? (
           <>
             <p onClick={onLogout} className="p-user">

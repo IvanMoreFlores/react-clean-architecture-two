@@ -7,16 +7,25 @@ import "./styles.scss";
 import { Product } from "../../../domain/entities/products.entity";
 import useProductStore from "../../store/zustand/ProductStore";
 import { calculateDiscount } from "../../utils";
+import { useCartStore } from "../../store/zustand/CartStore";
 
+type size = "S" | "M" | "L" | "XL";
 const DetailPage = () => {
   const { id } = useParams();
   const [open, setOpen] = useState<boolean>(true);
   const [product, setProduct] = useState<Product | null>(null);
   const [imageSelected, setImageSelected] = useState<string | null>(null);
   const user = localStorage.getItem("user");
+  const [colors, setColors] = useState<string>("red");
+  const [size, setSize] = useState<size>("S");
   const { product: productStore, setProduct: setProductStore } =
     useProductStore();
+  const { setCart, cart } = useCartStore();
+  // const cartStore = cart.find((item) => item.id === Number(id))?.quantity ?? 0;
 
+  const [count, setCount] = useState<number>(
+    cart.find((item) => item.id === Number(id))?.quantity ?? 1
+  );
   const handleOpen = () => {
     setOpen(!open);
   };
@@ -45,10 +54,49 @@ const DetailPage = () => {
       }
     };
     fetchProductDetails();
-  }, [id]);
+  }, []);
 
   const handleImageClick = (imageUrl: string) => {
     setImageSelected(imageUrl);
+  };
+
+  // const getRandomColor = () => {
+  //   const letters = "0123456789ABCDEF";
+  //   let color = "#";
+  //   for (let i = 0; i < 6; i++) {
+  //     color += letters[Math.floor(Math.random() * 16)];
+  //   }
+  //   return color;
+  // }
+
+  const handleColorClick = (color: string) => {
+    setColors(color);
+  };
+
+  const handleSizeClick = (newSize: size) => {
+    setSize(newSize);
+  };
+
+  const handleIncrement = () => {
+    setCount(count + 1);
+  };
+
+  const handleDecrement = () => {
+    if (count > 1) {
+      setCount(count - 1);
+    }
+  };
+
+  const handleAddToCart = () => {
+    if (product) {
+      const newProduct = {
+        ...product,
+        quantity: count,
+        color: colors,
+        size: size,
+      };
+      setCart(newProduct);
+    }
   };
 
   return (
@@ -154,13 +202,122 @@ const DetailPage = () => {
           </div>
           <div className="div-divider"></div>
           <p className="p-detail-description">Select Colors</p>
+          <div className="div-colors-product">
+            <div
+              onClick={() => handleColorClick("red")}
+              style={{ backgroundColor: "red" }}
+              className="div-colors"
+            >
+              {colors === "red" && (
+                <img
+                  src="/src/presentation/assets/icon/check.svg"
+                  alt="check"
+                  className="img-check"
+                />
+              )}
+            </div>
+            <div
+              onClick={() => handleColorClick("blue")}
+              style={{ backgroundColor: "blue" }}
+              className="div-colors"
+            >
+              {colors === "blue" && (
+                <img
+                  src="/src/presentation/assets/icon/check.svg"
+                  alt="check"
+                  className="img-check"
+                />
+              )}
+            </div>
+            <div
+              onClick={() => handleColorClick("green")}
+              style={{ backgroundColor: "green" }}
+              className="div-colors"
+            >
+              {colors === "green" && (
+                <img
+                  src="/src/presentation/assets/icon/check.svg"
+                  alt="check"
+                  className="img-check"
+                />
+              )}
+            </div>
+          </div>
           <div className="div-divider"></div>
+          <p className="p-detail-description">Choose Size</p>
+          <div className="div-size-products">
+            <div
+              onClick={() => handleSizeClick("S")}
+              className="div-size-product"
+              style={{ backgroundColor: size === "S" ? "#000" : "#f0f0f0" }}
+            >
+              <p
+                style={{ color: size === "S" ? "#f0f0f0" : "#000" }}
+                className="p-detail-product"
+              >
+                Small
+              </p>
+            </div>
+            <div
+              onClick={() => handleSizeClick("M")}
+              className="div-size-product"
+              style={{ backgroundColor: size === "M" ? "#000" : "#f0f0f0" }}
+            >
+              <p
+                style={{ color: size === "M" ? "#f0f0f0" : "#000" }}
+                className="p-detail-product"
+              >
+                Medium
+              </p>
+            </div>
+            <div
+              onClick={() => handleSizeClick("L")}
+              style={{ backgroundColor: size === "L" ? "#000" : "#f0f0f0" }}
+              className="div-size-product"
+            >
+              <p
+                style={{ color: size === "L" ? "#f0f0f0" : "#000" }}
+                className="p-detail-product"
+              >
+                Large
+              </p>
+            </div>
+            <div
+              onClick={() => handleSizeClick("XL")}
+              style={{ backgroundColor: size === "XL" ? "#000" : "#f0f0f0" }}
+              className="div-size-product"
+            >
+              <p
+                style={{ color: size === "XL" ? "#f0f0f0" : "#000" }}
+                className="p-detail-product"
+              >
+                X-Large
+              </p>
+            </div>
+          </div>
+          <div className="div-divider"></div>
+          <div className="div-detail-product">
+            <div className="div-quantity-product">
+              <div onClick={handleDecrement} className="div-detail-quantity">
+                <img
+                  src="/src/presentation/assets/icon/decrement.svg"
+                  alt="decrement"
+                />
+              </div>
+              <p className="p-detail-quantity">{count}</p>
+              <div onClick={handleIncrement} className="div-detail-quantity">
+                <img
+                  src="/src/presentation/assets/icon/increment.svg"
+                  alt="increment"
+                />
+              </div>
+            </div>
+            <div onClick={handleAddToCart} className="div-add-cart">
+              <p className="p-add-cart">Add to Cart</p>
+            </div>
+          </div>
         </div>
       </div>
-
-      {/* <h1>Detail Page</h1>
-      <p>This is the detail page {id}.</p> */}
-      {/* <p>{product?.category}</p> */}
     </section>
   );
 };

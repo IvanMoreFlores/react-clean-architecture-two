@@ -22,6 +22,10 @@ const DSNavBar = () => {
     navigate("/");
   };
 
+  const onClickCart = () => {
+    navigate("/cart");
+  };
+
   return (
     <div className="div-navbar-body">
       <div onClick={() => navigate("/")} className="div-navbar-logo">
@@ -42,7 +46,10 @@ const DSNavBar = () => {
       </div>
       <div className="div-navbar-icon">
         {countCart > 0 && (
-          <div className="div-navbar-icon badge-container">
+          <div
+            onClick={onClickCart}
+            className="div-navbar-icon badge-container"
+          >
             <img src="/src/presentation/assets/icon/cart.svg" alt="Cart" />
             <span className="cart-badge">{countCart}</span>
           </div>

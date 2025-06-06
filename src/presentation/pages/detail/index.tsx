@@ -6,7 +6,7 @@ import { DSDivSign, DSNavBar } from "../../components";
 import "./styles.scss";
 import { Product } from "../../../domain/entities/products.entity";
 import useProductStore from "../../store/zustand/ProductStore";
-import { calculateDiscount, formatDate, formatDateSpanish } from "../../utils";
+import { calculateDiscount, formatDateSpanish } from "../../utils";
 import { useCartStore } from "../../store/zustand/CartStore";
 
 type size = "S" | "M" | "L" | "XL";

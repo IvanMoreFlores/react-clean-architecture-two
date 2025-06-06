@@ -11,6 +11,8 @@ type CartState = {
   cart: Cart[];
   countCart: number;
   setCart: (cart: Cart) => void;
+  deleteCartId: (id: number) => void;
+  total: number;
 };
 
 export const useCartStore = create<CartState>()(
@@ -24,15 +26,26 @@ export const useCartStore = create<CartState>()(
           if (index === -1) {
             set({ cart: [...get().cart, cart] });
             set({ countCart: get().countCart + 1 });
+            set({ total: get().total + cart.price * cart.quantity });
           } else {
             const updatedCart = [...currentCart];
             updatedCart[index].quantity = cart.quantity;
             set({ cart: updatedCart });
+            set({ total: get().total + cart.price * cart.quantity });
           }
-          //   set({ cart: [...get().cart, cart] });
-          //   set({ countCart: get().countCart + 1 });
         },
         countCart: 0,
+        total: 0,
+        deleteCartId: (id: number) => {
+          const itemToRemove = get().cart.find((item) => item.id === id);
+          const itemTotal =
+            (itemToRemove?.price ?? 0) * (itemToRemove?.quantity ?? 0);
+          set({
+            total: get().total - itemTotal,
+          });
+          set({ cart: get().cart.filter((item) => item.id !== id) });
+          set({ countCart: get().countCart - 1 });
+        },
       }),
       {
         name: "cart",

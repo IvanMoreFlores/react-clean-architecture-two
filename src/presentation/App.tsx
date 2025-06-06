@@ -5,6 +5,7 @@ import PageHome from "./pages/home";
 import LoginPage from "./pages/login";
 import PrivateRoute from "./routes/PrivateRoute";
 import PublicRoute from "./routes/PublicRoute";
+import CartPage from "./pages/cart";
 
 function App() {
   return (
@@ -31,6 +32,14 @@ function App() {
           <PublicRoute>
             <LoginPage />
           </PublicRoute>
+        }
+      />
+      <Route
+        path="/cart"
+        element={
+          <PrivateRoute>
+            <CartPage />
+          </PrivateRoute>
         }
       />
       <Route

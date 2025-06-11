@@ -69,11 +69,7 @@ const PageHome = () => {
             </div>
           </div>
           <div className="div-hero-img">
-            <img
-              className="img-hero"
-              src="/src/presentation/assets/img/hero.png"
-              alt="Hero"
-            />
+            <img className="img-hero" src="/assets/img/hero.png" alt="Hero" />
           </div>
         </div>
         <div className="div-brands">

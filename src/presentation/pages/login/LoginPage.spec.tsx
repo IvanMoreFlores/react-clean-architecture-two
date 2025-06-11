@@ -1,4 +1,5 @@
-import { render, screen, fireEvent, waitFor } from "@testing-library/react";
+import { render } from "@testing-library/react";
+import { screen, fireEvent, waitFor } from "@testing-library/dom";
 import LoginPage from "./index";
 import { useNavigate } from "react-router";
 import { useAuthStore } from "../../store/zustand/AuthStore";

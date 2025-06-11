@@ -45,7 +45,7 @@ const PageHome = () => {
                 <p className="p-hero">THAT MATCHES</p>
                 <p className="p-hero">YOUR STYLE</p>
               </div>
-              <DSText variant="p" color="black">
+              <DSText>
                 Browse through our diverse range of meticulously crafted
                 garments, designed
               </DSText>
@@ -55,21 +55,15 @@ const PageHome = () => {
               <div className="div-hero-cards">
                 <div>
                   <p className="p-card">200+</p>
-                  <DSText variant="p" color="black">
-                    International Brands
-                  </DSText>
+                  <DSText>International Brands</DSText>
                 </div>
                 <div>
                   <p className="p-card">2,000+</p>
-                  <DSText variant="p" color="black">
-                    High-Quality Products
-                  </DSText>
+                  <DSText>High-Quality Products</DSText>
                 </div>
                 <div>
                   <p className="p-card">30,000+</p>
-                  <DSText variant="p" color="black">
-                    Happy Customers
-                  </DSText>
+                  <DSText>Happy Customers</DSText>
                 </div>
               </div>
             </div>

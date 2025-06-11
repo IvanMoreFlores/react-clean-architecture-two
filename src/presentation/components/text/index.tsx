@@ -6,7 +6,7 @@ interface IProps {
   color?: string;
 }
 
-const index = ({ children, variant = "p", className, color }: IProps) => {
+const index = ({ children }: IProps) => {
   return <p className="text-body">{children}</p>;
 };
 

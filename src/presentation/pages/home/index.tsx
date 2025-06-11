@@ -69,18 +69,15 @@ const PageHome = () => {
             </div>
           </div>
           <div className="div-hero-img">
-            <img className="img-hero" src="/img/hero.png" alt="Hero" />
+            <img className="img-hero" src="/assets/img/hero.png" alt="Hero" />
           </div>
         </div>
         <div className="div-brands">
-          <img src="/src/presentation/assets/img/versace.svg" alt="Versace" />
-          <img src="/src/presentation/assets/img/zara.svg" alt="Zara" />
-          <img src="/src/presentation/assets/img/gucci.svg" alt="Gucci" />
-          <img src="/src/presentation/assets/img/prada.svg" alt="Prada" />
-          <img
-            src="/src/presentation/assets/img/calvin-klein.svg"
-            alt="Calvin"
-          />
+          <img src="/assets/img/versace.svg" alt="Versace" />
+          <img src="/assets/img/zara.svg" alt="Zara" />
+          <img src="/assets/img/gucci.svg" alt="Gucci" />
+          <img src="/assets/img/prada.svg" alt="Prada" />
+          <img src="/assets/img/calvin-klein.svg" alt="Calvin" />
         </div>
       </div>
       <div className="div-arrival">

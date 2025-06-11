@@ -44,7 +44,7 @@ const CartPage = () => {
           <div>
             <p>Home</p>
           </div>
-          <img src="/src/presentation/assets/icon/rigth.svg" alt="right" />
+          <img src="/assets/icon/rigth.svg" alt="right" />
           <div>
             <p>Cart</p>
           </div>
@@ -72,7 +72,7 @@ const CartPage = () => {
                     <div onClick={() => handleDelete(cart.id)}>
                       <img
                         style={{ cursor: "pointer" }}
-                        src="/src/presentation/assets/icon/delete.svg"
+                        src="/assets/icon/delete.svg"
                         alt="close"
                       />
                     </div>
@@ -81,20 +81,14 @@ const CartPage = () => {
                         onClick={() => handleDecrement(cart, cart.quantity - 1)}
                         className="div-detail-quantity"
                       >
-                        <img
-                          src="/src/presentation/assets/icon/decrement.svg"
-                          alt="decrement"
-                        />
+                        <img src="/assets/icon/decrement.svg" alt="decrement" />
                       </div>
                       <p className="p-detail-quantity">{cart.quantity}</p>
                       <div
                         onClick={() => handleIncrement(cart, cart.quantity + 1)}
                         className="div-detail-quantity"
                       >
-                        <img
-                          src="/src/presentation/assets/icon/increment.svg"
-                          alt="increment"
-                        />
+                        <img src="/assets/icon/increment.svg" alt="increment" />
                       </div>
                     </div>
                   </div>
@@ -125,7 +119,7 @@ const CartPage = () => {
             <div></div>
             <button className="btn-checkout" type="button">
               Go to Checkout
-              <img src="/src/presentation/assets/icon/arrow-down.svg" alt="" />
+              <img src="/assets/icon/arrow-down.svg" alt="" />
             </button>
           </div>
         </div>

@@ -109,15 +109,15 @@ const DetailPage = () => {
         <div>
           <p>Home</p>
         </div>
-        <img src="/src/presentation/assets/icon/rigth.svg" alt="right" />
+        <img src="/assets/icon/rigth.svg" alt="right" />
         <div>
           <p>Shop</p>
         </div>
-        <img src="/src/presentation/assets/icon/rigth.svg" alt="right" />
+        <img src="/assets/icon/rigth.svg" alt="right" />
         <div>
           <p>Men</p>
         </div>
-        <img src="/src/presentation/assets/icon/rigth.svg" alt="right" />
+        <img src="/assets/icon/rigth.svg" alt="right" />
         <div>
           <p>T-shirts</p>
         </div>
@@ -160,7 +160,7 @@ const DetailPage = () => {
                   return (
                     <img
                       key={index}
-                      src="/src/presentation/assets/img/star-one.svg"
+                      src="/assets/img/star-one.svg"
                       alt="star"
                       className="img-star"
                     />
@@ -169,7 +169,7 @@ const DetailPage = () => {
                   return (
                     <img
                       key={index}
-                      src="/src/presentation/assets/img/star.svg"
+                      src="/assets/img/star.svg"
                       alt="star"
                       className="img-star"
                     />
@@ -209,7 +209,7 @@ const DetailPage = () => {
             >
               {colors === "red" && (
                 <img
-                  src="/src/presentation/assets/icon/check.svg"
+                  src="/assets/icon/check.svg"
                   alt="check"
                   className="img-check"
                 />
@@ -222,7 +222,7 @@ const DetailPage = () => {
             >
               {colors === "blue" && (
                 <img
-                  src="/src/presentation/assets/icon/check.svg"
+                  src="/assets/icon/check.svg"
                   alt="check"
                   className="img-check"
                 />
@@ -235,7 +235,7 @@ const DetailPage = () => {
             >
               {colors === "green" && (
                 <img
-                  src="/src/presentation/assets/icon/check.svg"
+                  src="/assets/icon/check.svg"
                   alt="check"
                   className="img-check"
                 />
@@ -298,17 +298,11 @@ const DetailPage = () => {
           <div className="div-detail-product">
             <div className="div-quantity-product">
               <div onClick={handleDecrement} className="div-detail-quantity">
-                <img
-                  src="/src/presentation/assets/icon/decrement.svg"
-                  alt="decrement"
-                />
+                <img src="/assets/icon/decrement.svg" alt="decrement" />
               </div>
               <p className="p-detail-quantity">{count}</p>
               <div onClick={handleIncrement} className="div-detail-quantity">
-                <img
-                  src="/src/presentation/assets/icon/increment.svg"
-                  alt="increment"
-                />
+                <img src="/assets/icon/increment.svg" alt="increment" />
               </div>
             </div>
             <div onClick={handleAddToCart} className="div-add-cart">
@@ -330,7 +324,7 @@ const DetailPage = () => {
                     return (
                       <img
                         key={index}
-                        src="/src/presentation/assets/img/star-one.svg"
+                        src="/assets/img/star-one.svg"
                         alt="star"
                         className="img-star"
                       />
@@ -342,7 +336,7 @@ const DetailPage = () => {
                     return (
                       <img
                         key={index}
-                        src="/src/presentation/assets/img/star.svg"
+                        src="/assets/img/star.svg"
                         alt="star"
                         className="img-star"
                       />

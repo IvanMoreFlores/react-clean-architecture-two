@@ -13,7 +13,7 @@ const DSDivSign = ({ onClose }: IProps) => {
         <p className="p-sign">Sign Up Now</p>
       </div>
       <button onClick={onClose} aria-label="Close">
-        <img src="/src/presentation/assets/icon/close.svg" alt="Close" />
+        <img src="/assets/icon/close.svg" alt="Close" />
       </button>
     </div>
   );

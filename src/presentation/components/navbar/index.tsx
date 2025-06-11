@@ -29,19 +29,19 @@ const DSNavBar = () => {
   return (
     <div className="div-navbar-body">
       <div onClick={() => navigate("/")} className="div-navbar-logo">
-        <img src="/src/presentation/assets/img/logo.svg" alt="Logo" />
+        <img src="/assets/img/logo.svg" alt="Logo" />
       </div>
       <div className="div-navbar-menu">
         <div className="div-navbar-shop">
           <p>Shop</p>
-          <img src="/src/presentation/assets/icon/arrow.svg" alt="Arrow" />
+          <img src="/assets/icon/arrow.svg" alt="Arrow" />
         </div>
         <p>On Sale</p>
         <p>New Arrivals</p>
         <p>Brands</p>
       </div>
       <div className="div-navbar-input">
-        <img src="/src/presentation/assets/icon/search.svg" alt="Search" />
+        <img src="/assets/icon/search.svg" alt="Search" />
         <input type="text" placeholder="Search for products..." />
       </div>
       <div className="div-navbar-icon">
@@ -50,7 +50,7 @@ const DSNavBar = () => {
             onClick={onClickCart}
             className="div-navbar-icon badge-container"
           >
-            <img src="/src/presentation/assets/icon/cart.svg" alt="Cart" />
+            <img src="/assets/icon/cart.svg" alt="Cart" />
             <span className="cart-badge">{countCart}</span>
           </div>
         )}
@@ -61,20 +61,13 @@ const DSNavBar = () => {
               Logout
             </p>
             <img
-              src={
-                localStorage.getItem("image") ??
-                "/src/presentation/assets/icon/user.svg"
-              }
+              src={localStorage.getItem("image") ?? "/assets/icon/user.svg"}
               alt="User"
               className="user-icon"
             />
           </>
         ) : (
-          <img
-            onClick={onClickSignIn}
-            src="/src/presentation/assets/icon/user.svg"
-            alt="User"
-          />
+          <img onClick={onClickSignIn} src="/assets/icon/user.svg" alt="User" />
         )}
 
         <p onClick={onClickSignIn} className="p-user">

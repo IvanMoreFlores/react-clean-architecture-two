@@ -59,7 +59,7 @@ const DSDivTittle = ({ title, onClick, divider = false, products }: IProps) => {
                       return (
                         <img
                           key={index}
-                          src="/src/presentation/assets/img/star-one.svg"
+                          src="/assets/img/star-one.svg"
                           alt="star"
                           className={styles["img-star"]}
                         />
@@ -71,7 +71,7 @@ const DSDivTittle = ({ title, onClick, divider = false, products }: IProps) => {
                       return (
                         <img
                           key={index}
-                          src="/src/presentation/assets/img/star.svg"
+                          src="/assets/img/star.svg"
                           alt="star"
                           className={styles["img-star"]}
                         />
